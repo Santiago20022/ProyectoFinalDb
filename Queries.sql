@@ -367,3 +367,70 @@ WHERE sp.propiedad_id = 1;
 SELECT a.titulo, a.contenido, u.nombre_completo AS autor
 FROM announcements a
 JOIN usuarios u ON a.creado_por = u.id;
+
+
+
+
+-- Seleccionar todos los datos de una tabla
+SELECT * FROM empleados;
+
+-- Seleccionar columnas específicas
+SELECT nombre, salario FROM empleados;
+
+-- Filtros básicos con WHERE
+SELECT * FROM empleados
+WHERE salario > 2000;
+
+-- Filtros compuestos
+SELECT * FROM empleados
+WHERE salario >= 2000 AND departamento = 'Ventas';
+
+-- Ordenar resultados
+SELECT * FROM empleados
+ORDER BY salario DESC;
+
+-- Limitar resultados
+SELECT * FROM empleados
+LIMIT 10;
+
+-- Contar registros
+SELECT COUNT(*) FROM empleados;
+
+-- Sumar valores
+SELECT SUM(salario) AS total_salarios FROM empleados;
+
+-- Promedio
+SELECT AVG(salario) AS promedio_salario FROM empleados;
+
+-- Valor máximo
+SELECT MAX(salario) AS salario_maximo FROM empleados;
+
+-- Valor mínimo
+SELECT MIN(salario) AS salario_minimo FROM empleados;
+
+-- Agrupar por columna (por ejemplo, por departamento)
+SELECT departamento, COUNT(*) AS total_empleados
+FROM empleados
+GROUP BY departamento;
+
+-- Sumar salarios por departamento
+SELECT departamento, SUM(salario) AS total_salarios
+FROM empleados
+GROUP BY departamento;
+
+-- Agrupar y filtrar con HAVING
+SELECT departamento, AVG(salario) AS promedio
+FROM empleados
+GROUP BY departamento
+HAVING AVG(salario) > 3000;
+
+-- Agrupar y ordenar
+SELECT departamento, COUNT(*) AS total
+FROM empleados
+GROUP BY departamento
+ORDER BY total DESC;
+
+-- Renombrar columnas (alias)
+SELECT nombre AS empleado, salario AS sueldo
+FROM empleados;
+
